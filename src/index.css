@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 50% 5%;
+    --foreground: 280 100% 97%;
+
+    --card: 260 40% 10%;
+    --card-foreground: 280 100% 97%;
+
+    --popover: 260 40% 10%;
+    --popover-foreground: 280 100% 97%;
+
+    --primary: 300 100% 65%;
+    --primary-foreground: 260 50% 5%;
+
+    --secondary: 260 30% 15%;
+    --secondary-foreground: 280 100% 97%;
+
+    --muted: 260 25% 20%;
+    --muted-foreground: 260 20% 60%;
+
+    --accent: 320 100% 60%;
+    --accent-foreground: 260 50% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 30% 25%;
+    --input: 260 30% 20%;
+    --ring: 300 100% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom neon tokens */
+    --neon-pink: 300 100% 65%;
+    --neon-purple: 280 100% 60%;
+    --neon-blue: 220 100% 60%;
+
+    --glow-neon: 0 0 20px hsl(300 100% 65% / 0.8), 0 0 40px hsl(300 100% 65% / 0.6), 0 0 80px hsl(300 100% 65% / 0.4);
+    --glow-neon-strong: 0 0 30px hsl(300 100% 65% / 1), 0 0 60px hsl(300 100% 65% / 0.8), 0 0 120px hsl(300 100% 65% / 0.5);
+    --glow-text: 0 0 10px hsl(300 100% 65% / 0.8), 0 0 20px hsl(300 100% 65% / 0.5);
+
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 260 40% 10%;
+    --sidebar-foreground: 280 100% 97%;
+    --sidebar-primary: 300 100% 65%;
+    --sidebar-primary-foreground: 260 50% 5%;
+    --sidebar-accent: 260 30% 15%;
+    --sidebar-accent-foreground: 280 100% 97%;
+    --sidebar-border: 260 30% 25%;
+    --sidebar-ring: 300 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .text-glow {
+    text-shadow: var(--glow-text);
+  }
+
+  .neon-border {
+    box-shadow: var(--glow-neon);
+    border: 2px solid hsl(var(--primary));
+  }
+
+  .neon-border-strong {
+    box-shadow: var(--glow-neon-strong);
+    border: 2px solid hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 1s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+
+  .animate-typewriter {
+    animation: typewriter 2s steps(20) forwards, blink 0.7s step-end infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(300 100% 65% / 0.6), 0 0 40px hsl(300 100% 65% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(300 100% 65% / 0.9), 0 0 80px hsl(300 100% 65% / 0.6), 0 0 120px hsl(300 100% 65% / 0.3);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  @keyframes count-flip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(-90deg); }
+    100% { transform: rotateX(0deg); }
+  }
+}
